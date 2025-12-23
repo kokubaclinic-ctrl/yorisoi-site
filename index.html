@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>病児保育よりそい | Official Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">こころ、安らぐ。<br>第二のわが家。</h1>
+      <p style="font-family: 'Poppins', sans-serif; letter-spacing: 0.1em; font-size: 0.8rem;">Premium Care for Your Precious One.</p>
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="section-heading fade-up">
+      <span class="en">ABOUT US</span>
+      <h2 class="jp">大切なお知らせ</h2>
+      <div class="info-notice">
+        <p><strong>前日予約は21:00まで</strong>受付けております。<br>浦添市民の方は優先的に予約を確定いたします。</p>
+      </div>
+    </div>
+
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item g-1"><img src="assets/image_3.jpg" alt="Care"></div>
+      <div class="gallery-item g-2"><img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=500" alt="Toy"></div>
+      <div class="gallery-item g-3"><img src="assets/image_2.jpg" alt="Hug"></div>
+      <div class="gallery-item g-4"><img src="https://images.unsplash.com/photo-1584208329158-00c32187273e?q=80&w=800" alt="Room"></div>
+    </div>
+  </section>
+
+  <section style="background: #E8E2D8; padding: 60px 0;">
+    <div class="container">
+      <div class="section-heading fade-up">
+        <span class="en">PRICE & MEALS</span>
+        <h2 class="jp">料金と食事について</h2>
+      </div>
+      
+      <div class="price-card fade-up">
+        <div class="price-row"><span>浦添市民</span><div><strong>2,000</strong> <small>円/回</small></div></div>
+        <div class="price-row"><span>市外の方</span><div><strong>3,000</strong> <small>円/回</small></div></div>
+        <p class="price-info-text">※午前のみ・午後のみ・終日でも料金は一律です。</p>
+      </div>
+
+      <div class="meal-card fade-up" style="margin-top:20px;">
+        <h3>🍱 お食事について</h3>
+        <p style="font-size:0.8rem; margin-bottom:10px;">「食べ慣れたものを」との思いから、<strong>お弁当の持参</strong>を推奨しております。</p>
+        <table class="meal-table">
+          <tr><th>終日利用</th><td>昼食＋おやつ</td></tr>
+          <tr><th>午前のみ</th><td>なし</td></tr>
+          <tr><th>午後から</th><td>おやつあり</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-heading fade-up">
+      <span class="en">ITEMS</span>
+      <h2 class="jp">当日の持ち物</h2>
+    </div>
+    <div class="item-list fade-up">
+      <ul>
+        <li>お弁当（持参推奨）</li>
+        <li>医師連絡票（診断書）</li>
+        <li>健康保険証・受給者証</li>
+        <li>現在服用中の薬</li>
+        <li>お着替え・おむつ等</li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item active"><span class="tab-icon">🏠</span><span>ホーム</span></a>
+    <a href="apply.html" class="tab-item"><span class="tab-icon">📝</span><span>予約方法</span></a>
+    <a href="#" class="tab-item" onclick="alert('LINE連携デモ画面へ')"><span class="tab-icon">💬</span><span>相談・LINE</span></a>
+  </nav>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('on'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg && scrolled < window.innerHeight) { heroBg.style.setProperty('--scroll-y', `${scrolled * 0.5}px`); }
+    });
+  </script>
+</body>
+</html>
