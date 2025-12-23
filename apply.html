@@ -7,53 +7,68 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header style="padding: 60px 20px 20px; text-align: center;">
-    <h1 class="section-heading"><span class="en">RESERVATION</span><span class="jp">予約のご案内</span></h1>
+
+  <header class="hero" style="height:42vh;">
+    <div class="hero-bg" style="background-image:url('assets/image_0.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-box fade-up" style="padding:26px 20px;">
+      <h1 style="font-size:1.55rem;">ご予約の流れ</h1>
+      <p>浦添市民／市外の方で確定タイミングが違います</p>
+      <div class="notice" style="margin-top:12px;text-align:left;">
+        <div class="mini">
+          <strong>前日21:00まで</strong>：仮受付（LINE/電話）<br>
+          <strong>当日8:30</strong>：市外の方は空き状況で確定（確定連絡まで来所をお控えください）
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section class="container" style="padding-bottom: 100px;">
-    <div class="notice-box fade-up">
-      <p><strong>前日予約締切：21:00</strong></p>
+  <section class="container" style="padding-top:30px;">
+    <div class="step-card fade-up">
+      <span class="step-label">STEP 01</span>
+      <h3 style="font-family:var(--font-maru);color:var(--main);font-size:1.15rem;">前日までに仮受付</h3>
+      <div class="small-note" style="margin-top:6px;">
+        LINE／お電話にて「お名前・年齢・症状・希望時間」をお伝えください。
+      </div>
     </div>
 
-    <div class="flow-list fade-up">
-      <div class="flow-item">
-        <div class="flow-num">01</div>
-        <h3 style="color:#3A5F76;">前日までに仮受付</h3>
-        <p style="font-size:0.85rem;">LINE/お電話にて「お名前・年齢・症状・希望時間」をお伝えください。</p>
-      </div>
+    <div class="step-card fade-up" style="border-left-color: var(--accent);">
+      <span class="step-label" style="color:var(--main);">STEP 02</span>
+      <h3 style="font-family:var(--font-maru);color:var(--main);font-size:1.15rem;">利用の確定（当日）</h3>
 
-      <div class="flow-item highlight">
-        <div class="flow-num">02</div>
-        <h3 style="color:#C78665;">利用の確定（当日）</h3>
-        <div class="resident-split">
-          <div class="res-u">
-            <strong>浦添市民</strong><br><span>申込み時点で確定</span>
-          </div>
-          <div class="res-o">
-            <strong>市外の方</strong><br><span>当日8:30の空き状況で確定</span>
+      <div class="residence-split">
+        <div class="res-card urasoe">
+          <h4>浦添市民の方</h4>
+          <div class="small-note">申込み時点で <strong>予約確定（優先）</strong></div>
+        </div>
+        <div class="res-card">
+          <h4 style="color:var(--accent);font-family:var(--font-maru);">市外の方</h4>
+          <div class="small-note">
+            <strong>当日8:30の空き状況で確定</strong><br>
+            ※確定連絡があるまで来所をお控えください。
           </div>
         </div>
-        <p style="font-size:0.8rem; color:#666; margin-top:10px;">※市外の方は、確定連絡があるまで来所をお控えください。</p>
       </div>
+    </div>
 
-      <div class="flow-item">
-        <div class="flow-num">03</div>
-        <h3 style="color:#3A5F76;">受診・入室</h3>
-        <img src="assets/image_3.jpg" alt="" style="border-radius:12px; margin:10px 0; height:120px; width:100%; object-fit:cover;">
-        <p style="font-size:0.85rem;"><strong>医師連絡票</strong>をお持ちの上、ご来所ください。</p>
+    <div class="step-card fade-up">
+      <span class="step-label">STEP 03</span>
+      <h3 style="font-family:var(--font-maru);color:var(--main);font-size:1.15rem;">受診・入室</h3>
+      <div class="small-note" style="margin-top:6px;">
+        <strong>医師連絡票</strong>をお持ちの上、ご来所ください。
       </div>
+      <img src="assets/image_3.jpg" alt="" style="width:100%;border-radius:24px;margin-top:14px;box-shadow:var(--shadow);">
     </div>
   </section>
 
   <nav class="tab-bar">
     <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span>ホーム</span></a>
     <a href="apply.html" class="tab-item active"><span class="tab-icon">📝</span><span>予約方法</span></a>
-    <a href="#" class="tab-item" onclick="alert('LINE連携デモ')"><span class="tab-icon">💬</span><span>相談・LINE</span></a>
+    <a href="#" class="tab-item" onclick="alert('LINE連携デモ画面へ')"><span class="tab-icon">💬</span><span>相談・LINE</span></a>
   </nav>
 
   <script>
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('on'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));

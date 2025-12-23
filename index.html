@@ -3,28 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>病児保育よりそい | Official Prototype</title>
+  <title>病児保育よりそい</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">こころ、安らぐ。<br>第二のわが家。</h1>
-      <p style="font-family: 'Poppins', sans-serif; letter-spacing: 0.1em; font-size: 0.8rem;">Premium Care for Your Precious One.</p>
+    <div class="hero-overlay"></div>
+    <div class="hero-box fade-up">
+      <h1>お子さまの「しんどい」を<br>「安心」に変える場所。</h1>
+      <p>病児保育よりそい（プロトタイプ）</p>
+
+      <div class="notice" style="margin-top:16px;text-align:left;">
+        <div style="font-weight:700;margin-bottom:6px;color:var(--main);font-family:var(--font-maru);">運営ルール（重要）</div>
+        <div class="mini">
+          <strong>祝日も営業</strong>（月〜金）／土日休み　受付 7:30〜16:30　対象：生後4か月〜12歳<br>
+          料金：浦添市民 <strong>2,000円/回</strong> ／ 市外の方 <strong>3,000円/回</strong>（<strong>終日利用でも料金は同じです</strong>）<br>
+          市外の方は「前日21:00まで仮受付」→ <strong>当日8:30の空き確認で確定</strong>
+        </div>
+      </div>
     </div>
   </header>
 
   <section class="container">
-    <div class="section-heading fade-up">
-      <span class="en">ABOUT US</span>
-      <h2 class="jp">大切なお知らせ</h2>
-      <div class="info-notice">
-        <p><strong>前日予約は21:00まで</strong>受付けております。<br>浦添市民の方は優先的に予約を確定いたします。</p>
-      </div>
+    <div class="title-area fade-up">
+      <span class="en">GALLERY</span>
+      <h2>よりそいの風景</h2>
     </div>
-
     <div class="gallery-grid fade-up">
       <div class="gallery-item g-1"><img src="assets/image_3.jpg" alt="Care"></div>
       <div class="gallery-item g-2"><img src="assets/image_1.jpg" alt="Toy"></div>
@@ -33,22 +39,35 @@
     </div>
   </section>
 
-  <section style="background: #E8E2D8; padding: 60px 0;">
-    <div class="container">
-      <div class="section-heading fade-up">
-        <span class="en">PRICE & MEALS</span>
-        <h2 class="jp">料金と食事について</h2>
+  <section class="container">
+    <div class="title-area fade-up">
+      <span class="en">PRICE & MEALS</span>
+      <h2>料金と食事について</h2>
+    </div>
+
+    <div class="card fade-up">
+      <div class="price-unit">
+        <div class="price-label">浦添市民</div>
+        <div class="price-value">2,000 <small>円/回</small></div>
       </div>
-      
-      <div class="price-card fade-up">
-        <div class="price-row"><span>浦添市民</span><div><strong>2,000</strong> <small>円/回</small></div></div>
-        <div class="price-row"><span>市外の方</span><div><strong>3,000</strong> <small>円/回</small></div></div>
-        <p class="price-info-text">※午前のみ・午後のみ・終日でも料金は一律です。</p>
+      <div class="price-unit">
+        <div class="price-label">市外の方</div>
+        <div class="price-value">3,000 <small>円/回</small></div>
+      </div>
+      <div class="small-note" style="text-align:center;margin-top:10px;">
+        ※午前のみ・午後のみ・終日でも料金は一律です。
       </div>
 
-      <div class="meal-card fade-up" style="margin-top:20px;">
-        <h3>🍱 お食事について</h3>
-        <p style="font-size:0.8rem; margin-bottom:10px;">「食べ慣れたものを」との思いから、<strong>お弁当の持参</strong>を推奨しております。</p>
+      <div class="meal-box">
+        <div class="meal-head">
+          <svg class="meal-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5V12.97C11.34 12.84 13 11.12 13 9V2h-2v7Zm5-3v8h2.5V22H21V2c-2.76 0-5 2.24-5 4Z"/>
+          </svg>
+          お食事について
+        </div>
+        <div class="small-note" style="margin-bottom:10px;">
+          「食べ慣れたものを」との思いから、<strong>お弁当の持参</strong>を推奨しております。
+        </div>
         <table class="meal-table">
           <tr><th>終日利用</th><td>昼食＋おやつ</td></tr>
           <tr><th>午前のみ</th><td>なし</td></tr>
@@ -58,19 +77,55 @@
     </div>
   </section>
 
-  <section class="container">
-    <div class="section-heading fade-up">
+  <section class="container items-wrap">
+    <svg class="rabbit left" viewBox="0 0 100 100" aria-hidden="true">
+      <path fill="#66C5CC" d="M30,20 Q40,5 50,20 Q60,5 70,20 Q80,40 50,80 Q20,40 30,20 M40,40 A5,5 0 1,1 41,40 M60,40 A5,5 0 1,1 61,40 M50,55 Q50,60 45,60 M50,55 Q50,60 55,60"/>
+    </svg>
+    <svg class="rabbit right" viewBox="0 0 100 100" aria-hidden="true">
+      <path fill="#FF8E8E" d="M30,20 Q40,5 50,20 Q60,5 70,20 Q80,40 50,80 Q20,40 30,20 M40,40 A5,5 0 1,1 41,40 M60,40 A5,5 0 1,1 61,40 M50,55 Q50,60 45,60 M50,55 Q50,60 55,60"/>
+    </svg>
+
+    <div class="title-area fade-up">
       <span class="en">ITEMS</span>
-      <h2 class="jp">当日の持ち物</h2>
+      <h2>当日の持ち物</h2>
     </div>
-    <div class="item-list fade-up">
-      <ul>
-        <li>お弁当（持参推奨）</li>
-        <li>医師連絡票（診断書）</li>
-        <li>健康保険証・受給者証</li>
-        <li>現在服用中の薬</li>
-        <li>お着替え・おむつ等</li>
-      </ul>
+
+    <div class="belonging-grid fade-up">
+      <div class="belonging-item">
+        <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="#FF8E8E"/>
+          <path d="M7.8 12.2l2.3 2.4 6.1-6.2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        お弁当（持参推奨）
+      </div>
+      <div class="belonging-item">
+        <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="#FF8E8E"/>
+          <path d="M7.8 12.2l2.3 2.4 6.1-6.2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        医師連絡票（診断書）
+      </div>
+      <div class="belonging-item">
+        <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="#FF8E8E"/>
+          <path d="M7.8 12.2l2.3 2.4 6.1-6.2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        健康保険証・受給者証
+      </div>
+      <div class="belonging-item">
+        <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="#FF8E8E"/>
+          <path d="M7.8 12.2l2.3 2.4 6.1-6.2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        現在服用中の薬
+      </div>
+      <div class="belonging-item">
+        <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="#FF8E8E"/>
+          <path d="M7.8 12.2l2.3 2.4 6.1-6.2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        お着替え・おむつ等
+      </div>
     </div>
   </section>
 
@@ -81,15 +136,10 @@
   </nav>
 
   <script>
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('on'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      const heroBg = document.querySelector('.hero-bg');
-      if (heroBg && scrolled < window.innerHeight) { heroBg.style.setProperty('--scroll-y', `${scrolled * 0.5}px`); }
-    });
   </script>
 </body>
 </html>
