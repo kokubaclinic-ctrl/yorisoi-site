@@ -8,63 +8,55 @@
 </head>
 <body>
 
-  <header class="hero" style="height:42vh;">
-    <div class="hero-bg" style="background-image:url('assets/image_0.jpg');"></div>
+  <header class="hero">
+    <img src="assets/image_3.jpg" class="hero-bg" alt="予約方法">
     <div class="hero-overlay"></div>
-    <div class="hero-box fade-up" style="padding:26px 20px;">
-      <h1 style="font-size:1.55rem;">ご予約の流れ</h1>
-      <p>浦添市民／市外の方で確定タイミングが違います</p>
-      <div class="notice" style="margin-top:12px;text-align:left;">
-        <div class="mini">
-          <strong>前日21:00まで</strong>：仮受付（LINE/電話）<br>
-          <strong>当日8:30</strong>：市外の方は空き状況で確定（確定連絡まで来所をお控えください）
-        </div>
-      </div>
+    <div class="hero-content fade-up">
+      <p style="color: #fff; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px;">RESERVATION</p>
+      <h1>ご予約の流れ</h1>
     </div>
   </header>
 
-  <section class="container" style="padding-top:30px;">
+  <section class="container" style="padding-top: 40px;">
     <div class="step-card fade-up">
-      <span class="step-label">STEP 01</span>
-      <h3 style="font-family:var(--font-maru);color:var(--main);font-size:1.15rem;">前日までに仮受付</h3>
-      <div class="small-note" style="margin-top:6px;">
-        LINE／お電話にて「お名前・年齢・症状・希望時間」をお伝えください。
-      </div>
+      <span class="step-num">STEP 01</span>
+      <h3 style="color: var(--color-main); margin-bottom: 8px;">前日21:00までの仮受付</h3>
+      <p style="font-size:0.85rem;">LINE公式アカウントにて、お子さまの年齢・症状・希望時間をご連絡ください。</p>
+      <a href="#" style="display:block; background:#06C755; color:white; text-align:center; padding:12px; border-radius:30px; margin-top:15px; text-decoration:none; font-weight:bold; font-size:0.85rem;">LINEで仮予約する</a>
     </div>
 
-    <div class="step-card fade-up" style="border-left-color: var(--accent);">
-      <span class="step-label" style="color:var(--main);">STEP 02</span>
-      <h3 style="font-family:var(--font-maru);color:var(--main);font-size:1.15rem;">利用の確定（当日）</h3>
-
+    <div class="step-card fade-up" style="border-top-color: var(--color-accent);">
+      <span class="step-num">STEP 02</span>
+      <h3 style="color: var(--color-main); margin-bottom: 8px;">当日朝の予約確定</h3>
       <div class="residence-split">
-        <div class="res-card urasoe">
-          <h4>浦添市民の方</h4>
-          <div class="small-note">申込み時点で <strong>予約確定（優先）</strong></div>
+        <div class="res-box urasoe">
+          <strong>浦添市民の方</strong>
+          <p style="font-size:0.75rem;">お申込み時点で<strong>予約確定</strong>（優先）となります。</p>
         </div>
-        <div class="res-card">
-          <h4 style="color:var(--accent);font-family:var(--font-maru);">市外の方</h4>
-          <div class="small-note">
-            <strong>当日8:30の空き状況で確定</strong><br>
-            ※確定連絡があるまで来所をお控えください。
-          </div>
+        <div class="res-box">
+          <strong>市外の方</strong>
+          <p style="font-size:0.75rem;">当日<strong>8:30の空き状況</strong>で確定します。確定連絡があるまで来所はお控えください。</p>
         </div>
       </div>
     </div>
 
     <div class="step-card fade-up">
-      <span class="step-label">STEP 03</span>
-      <h3 style="font-family:var(--font-maru);color:var(--main);font-size:1.15rem;">受診・入室</h3>
-      <div class="small-note" style="margin-top:6px;">
-        <strong>医師連絡票</strong>をお持ちの上、ご来所ください。
-      </div>
-      <img src="assets/image_3.jpg" alt="" style="width:100%;border-radius:24px;margin-top:14px;box-shadow:var(--shadow);">
+      <span class="step-num">STEP 03</span>
+      <h3 style="color: var(--color-main); margin-bottom: 8px;">受診・ご来所</h3>
+      <p style="font-size:0.85rem;">かかりつけ医による<strong>「医師連絡票」</strong>をお持ちの上、ご来所ください。</p>
     </div>
   </section>
 
-  <nav class="tab-bar">
-    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span>ホーム</span></a>
-    <a href="apply.html" class="tab-item active"><span class="tab-icon">📝</span><span>予約方法</span></a>
-    <a href="#" class="tab-item" onclick="alert('LINE連携デモ画面へ')"><span class="tab-icon">💬</span><span>相談・LINE</span></a>
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-link">
+      <svg class="nav-svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>ホーム
+    </a>
+    <a href="apply.html" class="nav-link active">
+      <svg class="nav-svg" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z"/></svg>予約方法
+    </a>
+    <a href="#" class="nav-link" onclick="alert('LINE連携')">
+      <svg class="nav-svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>相談・LINE
+    </a>
   </nav>
 
   <script>
