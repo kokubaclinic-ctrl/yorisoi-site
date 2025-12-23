@@ -55,22 +55,22 @@ section{padding:54px 0;position:relative;}
 .hero-overlay{
   position:absolute;inset:0;
   /* 文字が読める最低限。画像は殺さない */
-  background:linear-gradient(to bottom, rgba(255,255,255,.05), rgba(0,0,0,.28));
+  background:linear-gradient(to bottom, rgba(0,0,0,0.00), rgba(0,0,0,0.30));
   z-index:-1;
 }
 .glass-card{
-  width:min(520px, 92%);
-  background:rgba(255,255,255,.82);
+  width:min(460px, 90%);
+  background:rgba(255,255,255,.72);
   border:1px solid rgba(255,255,255,.55);
   border-radius:var(--radius-lg);
   box-shadow:0 18px 42px rgba(0,0,0,.14);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
-  padding:18px 16px 16px;
+  padding:14px 14px 12px;
 }
 .glass-card h1{
   font-family:var(--font-maru);
-  font-size:1.55rem;
+  font-size:1.48rem;
   line-height:1.35;
   color:var(--main);
 }
@@ -128,7 +128,7 @@ section{padding:54px 0;position:relative;}
 .section-title{text-align:center;margin-bottom:28px;position:relative;}
 .section-title h2{
   font-family:var(--font-maru);
-  font-size:1.55rem;
+  font-size:1.48rem;
   color:var(--main);
 }
 .section-title h2::after{
