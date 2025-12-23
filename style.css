@@ -35,52 +35,49 @@ section{padding:54px 0;position:relative;}
 .fade-up{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.22,1,.36,1);}
 .fade-up.on{opacity:1;transform:translateY(0);}
 
-/* ===== HERO (前さんが良いと言った構成に戻す) ===== */
+/* ===== HERO（画像だけを見せる）===== */
 .hero{
   position:relative;
-  height:62vh;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
+  height:34vh;               /* 画像を見せるがデカすぎない */
   overflow:hidden;
   border-radius:0 0 var(--radius-lg) var(--radius-lg);
-  padding:0 0 16px;
 }
 .hero-bg{
   position:absolute;inset:0;
   background:center/cover no-repeat;
-  z-index:-2;
   transform:scale(1.02);
+  z-index:-2;
 }
 .hero-overlay{
   position:absolute;inset:0;
-  /* 文字が読める最低限。画像は殺さない */
-  background:linear-gradient(to bottom, rgba(0,0,0,0.00), rgba(0,0,0,0.30));
+  /* 画像の雰囲気だけ整える（文字は載せない） */
+  background:linear-gradient(to bottom, rgba(255,255,255,.06), rgba(0,0,0,.12));
   z-index:-1;
 }
-.glass-card{
-  width:min(460px, 90%);
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(255,255,255,.55);
+
+/* ===== TOP CARD（ヒーローの下に全部まとめて表示）===== */
+.top-card{
+  margin-top:-26px;          /* ヒーローと自然につながる */
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(0,0,0,.04);
   border-radius:var(--radius-lg);
-  box-shadow:0 18px 42px rgba(0,0,0,.14);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  padding:14px 14px 12px;
+  box-shadow:var(--shadow);
+  padding:18px 16px 16px;
 }
-.glass-card h1{
+
+.top-card h1{
   font-family:var(--font-maru);
-  font-size:1.48rem;
+  font-size:1.55rem;
   line-height:1.35;
   color:var(--main);
 }
-.glass-card .sub{
+.top-card .sub{
   margin-top:6px;
-  font-size:.9rem;
+  font-size:.92rem;
   color:#6E6461;
 }
 
-/* KPI（受付・対象を確実に大きく） */
+/* KPI（対象・受付を確実に大きく） */
 .kpi-row{
   display:flex;
   gap:10px;
@@ -103,10 +100,10 @@ section{padding:54px 0;position:relative;}
   .kpi-pill{font-size:1.14rem;}
 }
 
-/* 運営ルールのカード（前さんが良いと言った白カード） */
+/* ルールカード（中の文字） */
 .rule-card{
   margin-top:12px;
-  background:rgba(255,255,255,.92);
+  background:#fff;
   border:1px solid rgba(0,0,0,.04);
   border-radius:var(--radius-md);
   padding:14px 14px;
@@ -128,7 +125,7 @@ section{padding:54px 0;position:relative;}
 .section-title{text-align:center;margin-bottom:28px;position:relative;}
 .section-title h2{
   font-family:var(--font-maru);
-  font-size:1.48rem;
+  font-size:1.55rem;
   color:var(--main);
 }
 .section-title h2::after{
@@ -140,7 +137,7 @@ section{padding:54px 0;position:relative;}
   border-radius:3px;
 }
 
-/* ===== Gallery (スマホで拡大されすぎを抑える) ===== */
+/* ===== Gallery（スマホで拡大されすぎを抑える）===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -158,7 +155,7 @@ section{padding:54px 0;position:relative;}
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center top; /* 子ども/看板が切れにくい */
+  object-position:center top;
 }
 @media (max-width:480px){
   .gallery{grid-auto-rows:160px;}
