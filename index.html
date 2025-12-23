@@ -7,19 +7,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="hero">
-    <img src="assets/image_0.jpg" class="hero-bg" alt="病児保育よりそい">
+    <div class="hero-bg" style="background-image:url('assets/image_0.jpg');"></div>
     <div class="hero-overlay"></div>
-    <div class="hero-content fade-up">
+
+    <div class="glass-card fade-up">
       <h1>小さな不安に、<br>大きな安心を。</h1>
-      <div class="hero-kpi">
-        <span class="kpi-age">対象：生後4か月〜12歳</span>
-        <span class="kpi-time">受付：7:30〜16:30</span>
+      <div class="sub">病児保育よりそい（プロトタイプ）</div>
+
+      <div class="kpi-row">
+        <span class="kpi-pill age">対象：生後4か月〜12歳</span>
+        <span class="kpi-pill time">受付：7:30〜16:30</span>
       </div>
-      <div class="hero-rule">
-        <div>営業：月〜金（<strong>祝日も営業</strong>）／土日休み</div>
-        <div>料金：浦添市民 <strong>2,000円／回</strong> ／ 市外 <strong>3,000円／回</strong>（<strong>終日利用でも料金は同じです</strong>）</div>
-        <div>市外の方：前日<strong>21:00</strong>まで仮受付 → 当日<strong>8:30</strong>の空き確認で確定</div>
+
+      <div class="rule-card">
+        <div class="ttl">運営ルール（重要）</div>
+        <div class="line">
+          <strong>祝日も営業</strong>（月〜金）／土日休み<br>
+          料金：浦添市民 <strong>2,000円／回</strong> ／ 市外 <strong>3,000円／回</strong>（<strong>終日利用でも料金は同じです</strong>）<br>
+          市外の方：前日<strong>21:00</strong>まで仮受付 → 当日<strong>8:30</strong>の空き確認で確定
+        </div>
       </div>
     </div>
   </header>
@@ -28,6 +36,7 @@
     <div class="section-title fade-up">
       <h2>よりそいの風景</h2>
     </div>
+
     <div class="gallery fade-up">
       <div class="gallery-img"><img src="assets/image_1.jpg" alt=""></div>
       <div class="gallery-img"><img src="assets/image_2.jpg" alt=""></div>
@@ -36,54 +45,48 @@
     </div>
   </section>
 
-  <section class="soft-bg">
-    <div class="container fade-up" style="position:relative;">
-      <svg class="rabbit-deco r-left" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M30,20 Q40,5 50,20 Q60,5 70,20 Q80,40 50,80 Q20,40 30,20 M40,40 A5,5 0 1,1 41,40 M60,40 A5,5 0 1,1 61,40 M50,55 Q50,60 45,60 M50,55 Q50,60 55,60" fill="#66C5CC" />
-      </svg>
-      <div class="section-title">
-        <h2>料金とお食事</h2>
-      </div>
-      <div class="card">
-        <div class="price-row"><span>浦添市民の方</span><span class="price-val">2,000<small>円</small></span></div>
-        <div class="price-row"><span>市外の方</span><span class="price-val">3,000<small>円</small></span></div>
-        <p class="note-strong">※終日利用でも料金は同じです</p>
-        <div class="meal-status">
-          <div class="meal-header">
-            <svg class="meal-svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M11,9H9V2H7V9H5V2H3V9C3,11.12 4.66,12.84 6.75,12.97V22H9.25V12.97C11.34,12.84 13,11.12 13,9V2H11V9M16,6V14H18.5V22H21V2C18.24,2 16,4.24 16,6Z"/>
-            </svg>
-            お食事のご案内
-          </div>
-          <p class="note">「いつもの味」で安心できるよう、お弁当持参を推奨しています。</p>
-          <table class="meal-table">
-            <tr><th>終日利用</th><td>昼食 ＋ おやつ</td></tr>
-            <tr><th>午前のみ</th><td>提供なし</td></tr>
-            <tr><th>午後から</th><td>おやつのみ</td></tr>
-          </table>
+  <section class="container">
+    <div class="section-title fade-up">
+      <h2>料金とお食事</h2>
+    </div>
+
+    <div class="card fade-up">
+      <div class="price-row"><span>浦添市民の方</span><span class="price-val">2,000<small>円</small></span></div>
+      <div class="price-row"><span>市外の方</span><span class="price-val">3,000<small>円</small></span></div>
+      <p class="note-strong">※終日利用でも料金は同じです</p>
+
+      <div class="meal-status">
+        <div class="meal-header">
+          <svg class="meal-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M11,9H9V2H7V9H5V2H3V9C3,11.12 4.66,12.84 6.75,12.97V22H9.25V12.97C11.34,12.84 13,11.12 13,9V2H11V9M16,6V14H18.5V22H21V2C18.24,2 16,4.24 16,6Z"/>
+          </svg>
+          お食事のご案内
         </div>
+        <p style="font-size:.78rem;color:#777;margin-bottom:10px;">「いつもの味」で安心できるよう、お弁当持参を推奨しています。</p>
+        <table class="meal-table">
+          <tr><th>終日利用</th><td>昼食 ＋ おやつ</td></tr>
+          <tr><th>午前のみ</th><td>提供なし</td></tr>
+          <tr><th>午後から</th><td>おやつのみ</td></tr>
+        </table>
       </div>
     </div>
   </section>
 
   <section class="container">
-    <div class="fade-up" style="position:relative;">
-      <svg class="rabbit-deco r-right" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M30,20 Q40,5 50,20 Q60,5 70,20 Q80,40 50,80 Q20,40 30,20 M40,40 A5,5 0 1,1 41,40 M60,40 A5,5 0 1,1 61,40 M50,55 Q50,60 45,60 M50,55 Q50,60 55,60" fill="#FF8E8E" />
-      </svg>
-      <div class="section-title">
-        <h2>当日の持ち物</h2>
-      </div>
-      <div class="item-grid">
-        <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>お弁当</div>
-        <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>医師連絡票</div>
-        <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>保険証・受給証</div>
-        <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>お薬</div>
-        <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>お着替え</div>
-        <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>おむつ等</div>
-      </div>
-      <p class="footer-mini">対象：生後4か月〜12歳｜受付：7:30〜16:30｜祝日も営業</p>
+    <div class="section-title fade-up">
+      <h2>当日の持ち物</h2>
     </div>
+
+    <div class="item-grid fade-up">
+      <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>お弁当</div>
+      <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>医師連絡票</div>
+      <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>保険証・受給証</div>
+      <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>お薬</div>
+      <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>お着替え</div>
+      <div class="item-chip"><svg class="check-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>おむつ等</div>
+    </div>
+
+    <p class="footer-mini">対象：生後4か月〜12歳｜受付：7:30〜16:30｜祝日も営業</p>
   </section>
 
   <nav class="bottom-nav">
@@ -107,5 +110,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>

@@ -7,15 +7,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="hero">
-    <img src="assets/image_3.jpg" class="hero-bg" alt="予約方法">
+    <div class="hero-bg" style="background-image:url('assets/image_3.jpg');"></div>
     <div class="hero-overlay"></div>
-    <div class="hero-content fade-up">
-      <p class="hero-sub">RESERVATION</p>
+
+    <div class="glass-card fade-up">
       <h1>ご予約の流れ</h1>
-      <div class="hero-kpi">
-        <span class="kpi-time">前日21:00まで仮受付</span>
-        <span class="kpi-age">市外：当日8:30で確定</span>
+      <div class="sub">浦添市民／市外で確定タイミングが異なります</div>
+
+      <div class="kpi-row">
+        <span class="kpi-pill time">前日21:00まで仮受付</span>
+        <span class="kpi-pill age">市外：当日8:30で確定</span>
       </div>
     </div>
   </header>
@@ -28,7 +31,7 @@
       <a href="#" class="btn-line">LINEで仮予約する（デモ）</a>
     </div>
 
-    <div class="step-card fade-up" style="border-top-color: var(--color-accent);">
+    <div class="step-card fade-up" style="border-top-color: var(--accent);">
       <span class="step-num">STEP 02</span>
       <h3 class="step-ttl">当日朝の予約確定</h3>
       <div class="residence-split">
@@ -71,5 +74,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
