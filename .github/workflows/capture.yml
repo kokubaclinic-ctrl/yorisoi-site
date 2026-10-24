@@ -28,7 +28,7 @@ jobs:
       - name: Install Playwright (uses the runner's preinstalled Google Chrome)
         working-directory: .capture
         run: |
-          npm init -y >/dev/null
+          echo '{"name":"capture","private":true,"type":"module"}' > package.json
           npm install --no-audit --no-fund playwright-core@1.47.2 >/dev/null || { echo "::error::npm install failed"; exit 1; }
           command -v google-chrome >/dev/null || { echo "::error::google-chrome not found on runner"; exit 1; }
       - name: Capture
