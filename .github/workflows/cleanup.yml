@@ -1,0 +1,38 @@
+# Daily safety net: delete capture branches, runs and artifacts older than 24 hours,
+# even if the caller could not delete them right after delivery.
+name: capture-cleanup
+on:
+  schedule:
+    - cron: "17 18 * * *"   # 03:17 JST every day
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      R: ${{ github.repository }}
+    steps:
+      - name: Delete capture branches older than 24h
+        run: |
+          now=$(date +%s)
+          gh api "repos/$R/git/matching-refs/heads/capture-out/" --paginate --jq '.[].ref' | while read -r ref; do
+            name=${ref#refs/heads/}
+            ts=$(echo "$name" | sed -E 's#^capture-out/([0-9]+)-.*#\1#')
+            case "$ts" in ''|*[!0-9]*) continue;; esac
+            if [ $((now - ts)) -gt 86400 ]; then
+              gh api -X DELETE "repos/$R/git/refs/heads/$name" && echo "deleted branch (age $(( (now-ts)/3600 ))h)"
+            fi
+          done
+      - name: Delete capture runs and artifacts older than 24h
+        run: |
+          cutoff=$(date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ)
+          gh api "repos/$R/actions/workflows/capture.yml/runs?per_page=100" --jq ".workflow_runs[] | select(.created_at < \"$cutoff\" and .status == \"completed\") | .id" | while read -r id; do
+            gh api -X DELETE "repos/$R/actions/runs/$id" && echo "deleted run"
+          done
+          gh api "repos/$R/actions/artifacts?per_page=100" --jq ".artifacts[] | select(.created_at < \"$cutoff\") | .id" | while read -r id; do
+            gh api -X DELETE "repos/$R/actions/artifacts/$id" && echo "deleted artifact"
+          done

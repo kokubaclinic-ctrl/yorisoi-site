@@ -1,15 +1,19 @@
 # Cloud screenshot capture (manual trigger only).
-# Images are kept as artifacts for 1 day at most and are deleted by the caller right after delivery.
+# The screenshot never leaves the runner unencrypted: it is encrypted to the
+# recipient certificate in .capture/ and pushed to a short-lived branch
+# capture-out/<epoch>-<run_id>. Only the holder of the private key can open it.
+# The caller deletes the branch right after delivery; cleanup.yml removes any
+# leftovers older than 24 hours.
 name: capture
 on:
   workflow_dispatch:
     inputs:
       url:
-        description: "Public test page URL (stage A test only)"
+        description: "Page URL to capture"
         required: false
         default: "https://example.com"
 permissions:
-  contents: read
+  contents: write
   actions: read
 concurrency:
   group: capture
@@ -36,10 +40,25 @@ jobs:
         env:
           TARGET_URL: ${{ inputs.url }}
         run: node capture.mjs
-      - name: Upload screenshot (kept 1 day max)
-        uses: actions/upload-artifact@v4
-        with:
-          name: capture
-          path: .capture/out/
-          retention-days: 1
-          if-no-files-found: error
+      - name: Encrypt and push to a short-lived branch
+        if: always()
+        working-directory: .capture
+        env:
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -e
+          [ -d out ] || { echo "::error::no output"; exit 1; }
+          tar -C out -czf /tmp/capture.tgz .
+          openssl cms -encrypt -binary -aes-256-cbc -outform DER \
+            -in /tmp/capture.tgz -out /tmp/capture.p7m recipient.cert.pem
+          rm -rf out /tmp/capture.tgz
+          BR="capture-out/$(date +%s)-${RUN_ID}"
+          mkdir /tmp/pub && cd /tmp/pub
+          git init -q -b "$BR"
+          git config user.name "capture-bot"
+          git config user.email "capture-bot@users.noreply.github.com"
+          cp /tmp/capture.p7m .
+          git add capture.p7m
+          git commit -q -m "encrypted capture ${RUN_ID}"
+          git push -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "HEAD:refs/heads/$BR"
+          echo "::notice::BRANCH=$BR"
