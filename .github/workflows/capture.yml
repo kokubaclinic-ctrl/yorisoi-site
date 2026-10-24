@@ -2,8 +2,8 @@
 # The screenshot never leaves the runner unencrypted: it is encrypted to the
 # recipient certificate in .capture/ and pushed to a short-lived branch
 # capture-out/<epoch>-<run_id>. Only the holder of the private key can open it.
-# The caller deletes the branch right after delivery; cleanup.yml removes any
-# leftovers older than 24 hours.
+# Right after delivery the caller runs cleanup.yml with max_age_hours=0;
+# the daily cleanup.yml run removes any leftovers older than 24 hours.
 name: capture
 on:
   workflow_dispatch:
@@ -35,6 +35,12 @@ jobs:
           echo '{"name":"capture","private":true,"type":"module"}' > package.json
           npm install --no-audit --no-fund playwright-core@1.47.2 >/dev/null || { echo "::error::npm install failed"; exit 1; }
           command -v google-chrome >/dev/null || { echo "::error::google-chrome not found on runner"; exit 1; }
+      - name: Install Japanese fonts
+        run: |
+          if ! fc-list :lang=ja | grep -q .; then
+            sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq fonts-noto-cjk >/dev/null || { echo "::error::font install failed"; exit 1; }
+          fi
+          fc-list :lang=ja | grep -q . || { echo "::error::no Japanese font"; exit 1; }
       - name: Capture
         working-directory: .capture
         env:

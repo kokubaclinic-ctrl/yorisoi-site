@@ -1,10 +1,16 @@
-# Daily safety net: delete capture branches, runs and artifacts older than 24 hours,
-# even if the caller could not delete them right after delivery.
+# Deletes capture branches, runs and artifacts.
+# Daily (schedule): anything older than 24 hours, as a safety net.
+# Manual (max_age_hours=0): everything, right after the image has been delivered.
 name: capture-cleanup
 on:
   schedule:
     - cron: "17 18 * * *"   # 03:17 JST every day
   workflow_dispatch:
+    inputs:
+      max_age_hours:
+        description: "Delete capture branches/runs older than this many hours (0 = all)"
+        required: false
+        default: "24"
 permissions:
   contents: write
   actions: write
@@ -15,24 +21,26 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       R: ${{ github.repository }}
+      MAX_AGE_H: ${{ inputs.max_age_hours || '24' }}
     steps:
-      - name: Delete capture branches older than 24h
+      - name: Delete old capture branches
         run: |
+          case "$MAX_AGE_H" in ''|*[!0-9]*) echo "::error::bad max_age_hours"; exit 1;; esac
           now=$(date +%s)
           gh api "repos/$R/git/matching-refs/heads/capture-out/" --paginate --jq '.[].ref' | while read -r ref; do
             name=${ref#refs/heads/}
             ts=$(echo "$name" | sed -E 's#^capture-out/([0-9]+)-.*#\1#')
             case "$ts" in ''|*[!0-9]*) continue;; esac
-            if [ $((now - ts)) -gt 86400 ]; then
+            if [ $((now - ts)) -ge $((MAX_AGE_H * 3600)) ]; then
               gh api -X DELETE "repos/$R/git/refs/heads/$name" && echo "deleted branch (age $(( (now-ts)/3600 ))h)"
             fi
           done
-      - name: Delete capture runs and artifacts older than 24h
+      - name: Delete old capture runs and artifacts
         run: |
-          cutoff=$(date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ)
-          gh api "repos/$R/actions/workflows/capture.yml/runs?per_page=100" --jq ".workflow_runs[] | select(.created_at < \"$cutoff\" and .status == \"completed\") | .id" | while read -r id; do
+          cutoff=$(date -u -d "$MAX_AGE_H hours ago" +%Y-%m-%dT%H:%M:%SZ)
+          gh api "repos/$R/actions/workflows/capture.yml/runs?per_page=100" --jq ".workflow_runs[] | select(.created_at <= \"$cutoff\" and .status == \"completed\") | .id" | while read -r id; do
             gh api -X DELETE "repos/$R/actions/runs/$id" && echo "deleted run"
           done
-          gh api "repos/$R/actions/artifacts?per_page=100" --jq ".artifacts[] | select(.created_at < \"$cutoff\") | .id" | while read -r id; do
+          gh api "repos/$R/actions/artifacts?per_page=100" --jq ".artifacts[] | select(.created_at <= \"$cutoff\") | .id" | while read -r id; do
             gh api -X DELETE "repos/$R/actions/artifacts/$id" && echo "deleted artifact"
           done
