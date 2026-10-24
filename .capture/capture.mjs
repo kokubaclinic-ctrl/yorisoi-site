@@ -1,12 +1,12 @@
 // Stage A: open a public page in a fresh cloud browser and save a new screenshot.
 // Prints only non-sensitive status lines (this repository is public).
-import { chromium } from 'playwright';
+import { chromium } from 'playwright-core';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
 const url = process.env.TARGET_URL || 'https://example.com';
 mkdirSync('out', { recursive: true });
 const startedAt = new Date().toISOString();
-const browser = await chromium.launch();
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 let status = 'ok';
 try {
@@ -18,7 +18,7 @@ try {
 } catch (e) {
   status = 'error';
   writeFileSync('out/meta.json', JSON.stringify({ startedAt, error: String(e && e.name) }, null, 2));
-  console.log('CAPTURE_FAILED', e && e.name);
+  console.log('::error::CAPTURE_FAILED ' + (e && e.name));
   process.exitCode = 1;
 } finally {
   await browser.close();

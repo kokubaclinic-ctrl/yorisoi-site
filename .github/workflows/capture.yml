@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   capture:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -24,13 +24,13 @@ jobs:
           sparse-checkout: .capture
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-      - name: Install Playwright Chromium
+          node-version: "22"
+      - name: Install Playwright (uses the runner's preinstalled Google Chrome)
         working-directory: .capture
         run: |
           npm init -y >/dev/null
-          npm install --no-audit --no-fund playwright@1.47.2 >/dev/null
-          npx playwright install --with-deps chromium >/dev/null
+          npm install --no-audit --no-fund playwright-core@1.47.2 >/dev/null || { echo "::error::npm install failed"; exit 1; }
+          command -v google-chrome >/dev/null || { echo "::error::google-chrome not found on runner"; exit 1; }
       - name: Capture
         working-directory: .capture
         env:
