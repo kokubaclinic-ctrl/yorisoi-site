@@ -1,0 +1,45 @@
+# Cloud screenshot capture (manual trigger only).
+# Images are kept as artifacts for 1 day at most and are deleted by the caller right after delivery.
+name: capture
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Public test page URL (stage A test only)"
+        required: false
+        default: "https://example.com"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: capture
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .capture
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Playwright Chromium
+        working-directory: .capture
+        run: |
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.47.2 >/dev/null
+          npx playwright install --with-deps chromium >/dev/null
+      - name: Capture
+        working-directory: .capture
+        env:
+          TARGET_URL: ${{ inputs.url }}
+        run: node capture.mjs
+      - name: Upload screenshot (kept 1 day max)
+        uses: actions/upload-artifact@v4
+        with:
+          name: capture
+          path: .capture/out/
+          retention-days: 1
+          if-no-files-found: error
